@@ -14,107 +14,79 @@ describe('.use', function () {
   });
 });
 
-describe('#on', function () {
-  // it('should return a route', function () {
-  //   var router = new Router();
-  //   var route = router.on('/something');
-  //   assert('Route' === route.constructor.name);
-  // });
-
-  it('should add callbacks', function () {
-    var router = new Router();
-    var route = router.on('/something', noop, noop);
-    assert(2 === router.callbacks.length);
-  });
-});
-
-describe('#dispatch', function () {
-  it('should invoke a matching route', function (done) {
-    var router = new Router();
-
-    router.on('/user', function () {
-      assert(false); // shouldn't be invoked
-    });
-
-    router.on('/user/:id/:page', function (id, page, next) {
-      assert('7' === id);
-      assert('bio' === page);
-      done();
-    });
-
-    router.dispatch('/user/7/bio');
-  });
-
-  it('should pass a next callback', function (done) {
-    var router = new Router();
-    router.on('/user', function (next) { next(); });
-    router.on('/user', function (next) { next(); done(); });
-    router.dispatch('/user');
-  });
-});
-
-describe('#go', function () {
-  it('should push and dispatch a path', function (done) {
-    var router = new Router();
-    router.on('/user', function () {
-      assert('/user' === location.pathname);
-      done();
-    });
-    router.go('/user');
-  });
-
-  it('should default to the current path', function (done) {
-    var router = new Router();
-    router.on('/something', function () { done(); });
-    history.replace('/something');
-    router.go();
-  });
-});
-
-describe('#listen', function () {
-  it('should go', function (done) {
-    var router = new Router();
-    router.on('/start', function () {
-      done();
-    });
-    history.push('/start');
-    router.listen();
-  });
-
-  it('shouldnt go if false', function () {
-    var router = new Router();
-    router.on('/start', function () {
-      assert(false); // shoudln't be invoked
-    });
-    history.push('/start');
-    router.listen(false);
-  });
-
-  it('should start listening for href clicks', function (done) {
-    var router = new Router();
-    router.on('/link', function () {
-      done();
-    });
-    router.listen(false);
-    click(document.getElementById('link'));
-  });
-
-  it('should namespace listening');
-});
-
 describe('#push', function () {
   it('should push to history', function () {
-    var router = new Router();
-    router.push('/push');
+    var router = new Router().push('/push');
     assert('/push' === location.pathname);
   });
 });
 
 describe('#replace', function () {
   it('should replace history', function () {
-    var router = new Router();
-    router.replace('/replace');
+    var router = new Router().replace('/replace');
     assert('/replace' === location.pathname);
+  });
+});
+
+describe('#on', function () {
+  it('should add callbacks', function () {
+    var router = new Router().on('/something', noop, noop);
+    assert(2 === router.callbacks.length);
+  });
+});
+
+describe('#dispatch', function () {
+  it('should invoke a matching route', function (done) {
+    var router = new Router()
+      .on('/user', function () {
+        assert(false); // shouldn't be invoked
+      })
+      .on('/user/:id/:page', function (context, next) {
+        assert('7' === context.params.id);
+        assert('bio' === context.params.page);
+        done();
+      })
+      .dispatch('/user/7/bio');
+  });
+
+  it('should pass a next callback', function (done) {
+    var router = new Router()
+      .on('/user', function (context, next) { next(); })
+      .on('/user', function (context, next) { next(); done(); })
+      .dispatch('/user');
+  });
+});
+
+describe('#go', function () {
+  it('should push and dispatch a path', function (done) {
+    var router = new Router()
+      .on('/user', function () {
+        assert('/user' === location.pathname);
+        done();
+      })
+      .go('/user');
+  });
+
+  it('should default to the current path', function (done) {
+    var router = new Router()
+      .replace('/something')
+      .on('/something', function () { done(); })
+      .go();
+  });
+});
+
+describe('#listen', function () {
+  it('should go and listen clicks', function (done) {
+    var i = 0;
+    var router = new Router()
+      .push('/start')
+      .on('/start', function () { i++; })
+      .on('/link', function () {
+        assert(1 === i);
+        done();
+      })
+      .listen();
+    click(document.getElementById('link'));
   });
 });
 

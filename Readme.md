@@ -17,13 +17,21 @@ var router = new Router()
   .on('/about/:user/:section', user, load)
   .listen('/about');
 
-function user (user, next) {
+function user (context, next) {
+  console.log(context.params.user);  // 'ian'
+  context.thing = 1;
   next();
 }
 
-function load (user, section, next) {
+function load (context, next) {
+  var p = context.params;
+  console.log(p.user);               // 'ian'
+  console.log(p.section);            // 'bio'
+  console.log(context.thing);        // 1
   next();
 }
+
+router.go('/about/ian/bio');
 ```
 
 ## API
