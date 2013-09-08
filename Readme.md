@@ -1,4 +1,3 @@
-
 # router
 
   A nice client-side router.
@@ -30,8 +29,6 @@ function load (context, next) {
   console.log(context.thing);        // 1
   next();
 }
-
-router.go('/about/ian/bio');
 ```
 
 ## API
