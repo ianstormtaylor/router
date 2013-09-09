@@ -1,3 +1,7 @@
+0.3.0 - September 9, 2013
+-------------------------
+* automatically call `next` when handlers have an arity less than `2`, by [@trevorgerhardt](https://github.com/trevorgerhardt)
+
 0.2.1 - September 9, 2013
 -------------------------
 * added optional `state` argument to `#go`
