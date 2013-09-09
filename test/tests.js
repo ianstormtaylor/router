@@ -44,6 +44,14 @@ describe('#on', function () {
     var router = new Router().on('/something', noop, noop);
     assert(2 == router.callbacks.length);
   });
+
+  it('should handle callbacks without next', function (done) {
+    var router = new Router()
+      .on('/something', noop, function() {
+        done();
+      })
+      .dispatch('/something');
+  });
 });
 
 describe('#dispatch', function () {
