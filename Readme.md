@@ -68,11 +68,11 @@ function load (context, next) {
 ### #dispatch(path)
   Trigger middleware for a `path`.
 
-### #push(path)
-  Push a `path` onto the history.
+### #push(path, [state])
+  Push a `path` onto the history, with an optional `state` object.
 
-### #replace(path)
-  Replace the current URL in the history with a new `path`.
+### #replace(path, [state])
+  Replace the current URL in the history with a new `path`, with an optional `state` object.
 
 ### .use(plugin)
   Use the given `plugin`.
