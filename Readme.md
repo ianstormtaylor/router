@@ -59,12 +59,12 @@ function load (context, next) {
 ### #start()
   Start the router, dispatching the current URL. (Convenience so you don't have to call `#dispatch(window.location...` yourself.)
 
-### #go(path)
-  Dispatch to a `path` and push it onto the history.
-
 ### #listen(path)
-  Start listening for link clicks that the router should handle, optionally namespaced by a `path`. This means that you don't need to `.preventDefault` clicks by hand on `a[href]`'s since the router will do it for you for internal links.
+  Start and listen for link clicks that the router should handle, optionally namespaced by a `path`. This means that you don't need to `.preventDefault` clicks by hand on `a[href]`'s since the router will do it for you for internal links.
 
+### #go(path, [state])
+  Dispatch to a `path` and push it onto the history with an optional `state` object.
+  
 ### #dispatch(path)
   Trigger middleware for a `path`.
 
