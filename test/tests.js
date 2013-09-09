@@ -86,6 +86,12 @@ describe('#go', function () {
   });
 });
 
+describe('#start', function () {
+  it('should be an alias for #go', function () {
+    assert(Router.prototype.start == Router.prototype.go);
+  });
+});
+
 describe('#listen', function () {
   it('should go and listen clicks', function (done) {
     var i = 0;
