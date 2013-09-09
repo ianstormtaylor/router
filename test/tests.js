@@ -73,9 +73,10 @@ describe('#go', function () {
     var router = new Router()
       .on('/user', function () {
         assert('/user' == history.path());
+        assert('user' == history.state().state);
         done();
       })
-      .go('/user');
+      .go('/user', { state: 'user' });
   });
 
   it('should default to the current path', function (done) {
