@@ -3,7 +3,8 @@ describe('Router', function () {
 var assert = require('assert')
   , history = require('history')
   , noop = function () {}
-  , Router = require('router');
+  , Router = require('router')
+  , trigger = require('trigger-event');
 
 describe('.use', function () {
   it('should be pluggable', function (done) {
@@ -96,25 +97,8 @@ describe('#listen', function () {
         done();
       })
       .listen();
-    click(document.getElementById('link'));
+    trigger(document.getElementById('link'), 'click');
   });
 });
 
 });
-
-
-/**
- * Pseudo-click a `link` element cross-browser.
- *
- * @param {Element} link
- */
-
-function click (link) {
-  if (document.createEvent) {
-    var e = document.createEvent('MouseEvent');
-    e.initMouseEvent('click', true, true, window, 1, 0, 0, 0, 0, false, false, false, false, 0, null);
-    link.dispatchEvent(e);
-  } else {
-    link.fireEvent('onClick');
-  }
-}

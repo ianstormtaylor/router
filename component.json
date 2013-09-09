@@ -14,7 +14,8 @@
     "yields/stop": "*"
   },
   "development": {
-    "component/assert": "*"
+    "component/assert": "*",
+    "ianstormtaylor/trigger-event": "*"
   },
   "scripts": [
     "lib/context.js",
