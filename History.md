@@ -1,7 +1,11 @@
+0.2.1 - September 9, 2013
+-------------------------
+* added optional `state` argument to `#go`
+
 0.2.0 - September 9, 2013
 -------------------------
 * added support for history `state` objects
-* added `start` alias
+* added `#start` alias
 
 0.1.0 - July 31, 2013
 ---------------------
