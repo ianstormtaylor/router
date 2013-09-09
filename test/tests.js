@@ -15,23 +15,33 @@ describe('.use', function () {
 });
 
 describe('#push', function () {
-  it('should push to history', function () {
+  it('should push path to history', function () {
     var router = new Router().push('/push');
-    assert('/push' === location.pathname);
+    assert('/push' == history.path());
+  });
+
+  it('should push state to history', function () {
+    var router = new Router().push('/push', { state: 'push' });
+    assert('push' == history.state().state);
   });
 });
 
 describe('#replace', function () {
   it('should replace history', function () {
     var router = new Router().replace('/replace');
-    assert('/replace' === location.pathname);
+    assert('/replace' == history.path());
+  });
+
+  it('should replace state in history', function () {
+    var router = new Router().replace('/replace', { state: 'replace' });
+    assert('replace' == history.state().state);
   });
 });
 
 describe('#on', function () {
   it('should add callbacks', function () {
     var router = new Router().on('/something', noop, noop);
-    assert(2 === router.callbacks.length);
+    assert(2 == router.callbacks.length);
   });
 });
 
@@ -42,8 +52,8 @@ describe('#dispatch', function () {
         assert(false); // shouldn't be invoked
       })
       .on('/user/:id/:page', function (context, next) {
-        assert('7' === context.params.id);
-        assert('bio' === context.params.page);
+        assert('7' == context.params.id);
+        assert('bio' == context.params.page);
         done();
       })
       .dispatch('/user/7/bio');
@@ -61,7 +71,7 @@ describe('#go', function () {
   it('should push and dispatch a path', function (done) {
     var router = new Router()
       .on('/user', function () {
-        assert('/user' === location.pathname);
+        assert('/user' == history.path());
         done();
       })
       .go('/user');
@@ -82,7 +92,7 @@ describe('#listen', function () {
       .push('/start')
       .on('/start', function () { i++; })
       .on('/link', function () {
-        assert(1 === i);
+        assert(1 == i);
         done();
       })
       .listen();

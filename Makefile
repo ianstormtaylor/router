@@ -14,4 +14,4 @@ test: build
 server:
 	node server
 
-.PHONY: clean test
+.PHONY: build clean test
