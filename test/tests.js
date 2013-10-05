@@ -68,6 +68,17 @@ describe('#dispatch', function () {
       .dispatch('/user/7/bio');
   });
 
+  it('should handle asterisks', function (done) {
+    var router = new Router()
+      .on('/foo/*/*', function (context, next) {
+        assert(2 === context.params.length);
+        assert('bar' === context.params[0]);
+        assert('baz' === context.params[1]);
+        done();
+      })
+      .dispatch('/foo/bar/baz');
+  });
+
   it('should pass a next callback', function (done) {
     var router = new Router()
       .on('/user', function (context, next) { next(); })
