@@ -138,8 +138,18 @@ describe('Router', function () {
 
     it('should default to the current path', function (done) {
       var router = new Router()
-        .replace('/something')
-        .on('/something', function (context, next) { done(); })
+        .replace('/route')
+        .on('/route', function (context, next) { done(); })
+        .go();
+    });
+
+    it('should add the querystring', function (done) {
+      new Router()
+        .replace('/route?key=value')
+        .on('/route', function (context, next) {
+          assert('value' == context.query.key);
+          done();
+        })
         .go();
     });
   });

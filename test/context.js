@@ -14,6 +14,11 @@ describe('Context', function () {
     assert('/path' == context.path);
   });
 
+  it('should store a querystring', function () {
+    var context = new Context('/path?key=value');
+    assert('value' == context.query.key);
+  });
+
   it('should create an empty params array', function () {
     var context = new Context();
     assert(context.params instanceof Array);

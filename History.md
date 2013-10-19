@@ -1,6 +1,7 @@
 0.4.1 - October 18, 2013
 ------------------------
 * expose `context` method for easy augmentation
+* add querystring support
 
 0.4.0 - October 18, 2013
 ------------------------
