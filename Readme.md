@@ -14,26 +14,6 @@ Super simple example:
 var Router = require('router');
 
 var router = new Router()
-  .on('/about/:user', user, load)
-  .start();
-
-function user (context, next) {
-  var id = context.params.user;
-  // do stuff
-  next();
-}
-
-function load (context, next) {
-  // do stuff
-}
-```
-
-More complex example, where instead of using `start`, we use `listen` to automatically catch any future `a[href]` clicks and do the routing for us:
-
-```js
-var Router = require('router');
-
-var router = new Router()
   .on('/about/:user', user)
   .on('/about/:user/:section', user, load)
   .listen('/about');
@@ -45,6 +25,7 @@ function user (context, next) {
 }
 
 function load (context, next) {
+  var id = context.params.user;
   var section = context.params.section;
   console.log(context.thing); // 1
   next();
