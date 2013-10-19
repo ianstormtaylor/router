@@ -1,3 +1,9 @@
+0.4.0 - October 18, 2013
+------------------------
+* updated to use [`segmentio/ware`](https://github.com/segmentio/ware)
+* allow for error handlers
+* store history `state` on context
+
 0.3.0 - September 9, 2013
 -------------------------
 * automatically call `next` when handlers have an arity less than `2`, by [@trevorgerhardt](https://github.com/trevorgerhardt)
