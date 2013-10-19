@@ -21,6 +21,21 @@ describe('Router', function () {
     });
   });
 
+  describe('#context', function () {
+    it('should return a context', function () {
+      var router = new Router();
+      var context = router.context();
+      assert(context instanceof Router.Context);
+    });
+
+    it('should add the previous context', function () {
+      var router = new Router();
+      var previous = router.context();
+      var context = router.context();
+      assert(context.previous == previous);
+    });
+  });
+
   describe('#push', function () {
     it('should push path to history', function () {
       var router = new Router().push('/push');
