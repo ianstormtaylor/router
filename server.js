@@ -1,6 +1,6 @@
 
-var express = require('express')
-  , hbs = require('hbs');
+var express = require('express');
+var hbs = require('hbs');
 
 
 /**

@@ -152,6 +152,16 @@ describe('Router', function () {
         })
         .go();
     });
+
+    it('should trigger on popstate', function (done) {
+      history.push('/popstate-one');
+      history.push('/popstate-two');
+      new Router()
+        .on('/popstate-one', function (context, next) {
+          done();
+        });
+      history.back();
+    });
   });
 
   describe('#start', function () {

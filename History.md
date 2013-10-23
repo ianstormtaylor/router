@@ -1,3 +1,7 @@
+0.5.0 - October 23, 2013
+------------------------
+* listen on `popstate`
+
 0.4.1 - October 18, 2013
 ------------------------
 * expose `context` method for easy augmentation
