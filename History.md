@@ -1,3 +1,7 @@
+0.5.1 - October 23, 2013
+------------------------
+* wait for `ready` to bind to `popstate` for Chrome/Safari
+
 0.5.0 - October 23, 2013
 ------------------------
 * listen on `popstate`
