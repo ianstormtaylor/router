@@ -1,16 +1,23 @@
 <html>
-    <head>
-        <link rel="stylesheet" href="/test/mocha.css" />
-    </head>
-    <body>
-        <div id="mocha"></div>
-        <a id="link" href="/link"></a>
-        <a id="other-link" href="/other/link"></a>
-        <script src="/test/mocha.js"></script>
-        <script>mocha.setup({ui: 'bdd'})</script>
-        <script src="/build/build.js"></script>
-        <script src="/test/context.js"></script>
-        <script src="/test/index.js"></script>
-        <script>mocha.run();</script>
-    </body>
+<head>
+  <title>router tests</title>
+  <link rel="stylesheet" href="/test/mocha.css" />
+  <script src="/build/build.js"></script>
+  <script>
+    var Router = require('router');
+    new Router().on('/', function (ctx, next) {
+      throw new Error;
+    });
+  </script>
+</head>
+<body>
+  <div id="mocha"></div>
+  <a id="link" href="/link"></a>
+  <a id="other-link" href="/other/link"></a>
+  <script src="/test/mocha.js"></script>
+  <script>mocha.setup({ui: 'bdd'})</script>
+  <script src="/test/context.js"></script>
+  <script src="/test/index.js"></script>
+  <script>mocha.run();</script>
+</body>
 </html>

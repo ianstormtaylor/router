@@ -11,6 +11,16 @@ describe('Router', function () {
     history.replace('/');
   });
 
+  it('should bind to popstate', function (done) {
+    history.push('/popstate-one');
+    history.push('/popstate-two');
+    new Router()
+      .on('/popstate-one', function (context, next) {
+        done();
+      });
+    setTimeout(history.back, 500);
+  });
+
   describe('#use', function () {
     it('should be pluggable', function (done) {
       var router = new Router();
@@ -151,16 +161,6 @@ describe('Router', function () {
           done();
         })
         .go();
-    });
-
-    it('should trigger on popstate', function (done) {
-      history.push('/popstate-one');
-      history.push('/popstate-two');
-      new Router()
-        .on('/popstate-one', function (context, next) {
-          done();
-        });
-      history.back();
     });
   });
 

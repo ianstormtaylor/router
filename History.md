@@ -1,3 +1,7 @@
+0.5.2 - October 24, 2013
+------------------------
+* actually do what i was trying to do in `0.5.1`
+
 0.5.1 - October 23, 2013
 ------------------------
 * wait for `ready` to bind to `popstate` for Chrome/Safari
