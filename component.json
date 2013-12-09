@@ -12,7 +12,6 @@
     "component/querystring": "*",
     "component/url": "*",
     "ianstormtaylor/history": "*",
-    "ianstormtaylor/on-load": "*",
     "segmentio/ware": "*",
     "timoxley/next-tick": "*",
     "yields/prevent": "*",
