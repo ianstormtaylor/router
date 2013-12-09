@@ -18,7 +18,7 @@ describe('Router', function () {
       .on('/popstate-one', function (context, next) {
         done();
       });
-    setTimeout(history.back, 500);
+    setTimeout(history.back, 1001);
   });
 
   describe('#use', function () {
@@ -70,18 +70,15 @@ describe('Router', function () {
     });
   });
 
-  describe('#on', function () {
-    it('should add callbacks', function () {
-      var router = new Router().on('/route', noop, noop);
-      assert(2 == router.middleware.fns.length);
-    });
-  });
-
   describe('#dispatch', function () {
     it('should match the right route', function (done) {
       var router = new Router()
-        .on('/one', function (context, next) { assert(false); next(); })
-        .on('/two', function (context, next) { done(); })
+        .on('/one', function (context, next) {
+          assert(false); next();
+        })
+        .on('/two', function (context, next) {
+          done();
+        })
         .dispatch('/two');
     });
 
@@ -133,6 +130,33 @@ describe('Router', function () {
         .on('/route', noop, function (context, next) { done(); })
         .dispatch('/route');
     });
+
+    it('should call in middleware', function (done) {
+      new Router()
+        .on('/route')
+        .in(function (context, next) {
+          assert(context.path === '/route');
+          done();
+        })
+        .dispatch('/route');
+    });
+
+    it('should call out middleware', function (done) {
+      var i = 0;
+      var router = new Router()
+        .on('/route')
+        .in(function (context, next) {
+          assert(context.path === '/route');
+          i++;
+        })
+        .out(function (context, next) {
+          assert(context.path === '/route');
+          assert(i === 1);
+          done();
+        })
+        .dispatch('/route')
+        .dispatch('/another');
+    });
   });
 
   describe('#go', function () {
@@ -175,7 +199,9 @@ describe('Router', function () {
       var i = 0;
       var router = new Router()
         .push('/start')
-        .on('/start', function (context, next) { i++; })
+        .on('/start', function (context, next) {
+          i++;
+        })
         .on('/link', function (context, next) {
           assert(1 == i);
           done();

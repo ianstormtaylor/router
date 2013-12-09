@@ -1,3 +1,7 @@
+0.6.0 - December 9, 2013
+------------------------
+* add `in` and `out` transition methods
+
 0.5.2 - October 24, 2013
 ------------------------
 * actually do what i was trying to do in `0.5.1`

@@ -8,34 +8,55 @@
 
 ## Example
 
-Super simple example:
+Simple example:
 
 ```js
+var db = require('db');
 var Router = require('router');
 
 var router = new Router()
-  .on('/about/:user', user)
-  .on('/about/:user/:section', user, load)
-  .listen('/about');
+  .on('/:user', user, renderUser)
+  .on('/:user/:repo', user, repo, renderRepo)
+  .start();
 
 function user (context, next) {
   var id = context.params.user;
-  context.thing = 1;
+  var user = db.users.get(id);
+  context.user = user;
   next();
 }
 
-function load (context, next) {
-  var id = context.params.user;
-  var section = context.params.section;
-  console.log(context.thing); // 1
+function repo (context, next) {
+  var id = context.params.repo;
+  var repo = db.users.get(id);
+  context.repo = repo;
   next();
 }
+
+function renderUser (context, next) {
+  var user = context.user;
+  render(user);
+}
+
+function renderRepo (context, next) {
+  var user = context.user;
+  var repo = context.repo;
+  render(user, repo);
+}
 ```
+
+Check the [`examples`](/examples) folder for the some more complicated examples.
 
 ## API
 
 ### #on(path, middleware...)
   Bind `middleware` functions to a `path`. Middleware take `next` callbacks to move to the next middleware on the queue.
+
+### #in(middleware...)
+  Add "in" transition `middleware` that will be executed when a route is matched. This is equivalent to passing middleware to `#on`. You have to call `#on` first before calling `#in`.
+
+### #out(middleware...)
+  Add "out" transition `middleware` that will be executed when the route is being "torn down" and another route is matched. You have to call `#on` first before calling `#out`.
 
 ### #start()
   Start the router, dispatching the current URL. (Convenience so you don't have to call `#dispatch(window.location...` yourself.)
