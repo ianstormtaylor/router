@@ -1,3 +1,7 @@
+0.6.1 - January 13, 2013
+------------------------
+* fix anchor delegation
+
 0.6.0 - December 9, 2013
 ------------------------
 * add `in` and `out` transition methods
