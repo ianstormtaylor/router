@@ -1,3 +1,7 @@
+0.6.2 - January 16, 2013
+------------------------
+* bump popstate wait time, webkit fix coming
+
 0.6.1 - January 13, 2013
 ------------------------
 * fix anchor delegation
