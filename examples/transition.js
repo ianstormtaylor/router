@@ -1,4 +1,3 @@
-
 var Router = require('router');
 var Page = require('page-view');
 
@@ -45,6 +44,6 @@ function showSidebar (context, next) {
  * @param {Function} next
  */
 
-function showSidebar (context, next) {
+function hideSidebar (context, next) {
   document.body.classList.remove('has-sidebar');
 }
