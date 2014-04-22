@@ -2,7 +2,7 @@
   "name": "router",
   "repo": "ianstormtaylor/router",
   "license": "MIT",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "A nice client-side router.",
   "keywords": ["router", "push", "replace", "link", "delegate", "listen"],
   "dependencies": {

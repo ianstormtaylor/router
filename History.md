@@ -1,8 +1,13 @@
-0.6.2 - January 16, 2013
+
+0.6.3 - April 22, 2014
+----------------------
+* fix `in` keyword for IE8
+
+0.6.2 - January 16, 2014
 ------------------------
 * bump popstate wait time, webkit fix coming
 
-0.6.1 - January 13, 2013
+0.6.1 - January 13, 2014
 ------------------------
 * fix anchor delegation
 
