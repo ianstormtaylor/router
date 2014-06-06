@@ -1,6 +1,14 @@
 {
   "name": "router",
-  "private": true,
+  "repository": "git://github.com/ianstormtaylor/router.git",
+  "license": "MIT",
+  "version": "0.6.3",
+  "description": "A nice client-side router.",
+  "keywords": [
+    "router",
+    "route",
+    "routing"
+  ],
   "dependencies": {
     "express": "~3.3.4",
     "hbs": "~2.3.0"
