@@ -13,9 +13,9 @@
     "component/url": "*",
     "ianstormtaylor/history": "*",
     "segmentio/ware": "*",
-    "timoxley/next-tick": "*",
     "yields/prevent": "*",
-    "yields/stop": "*"
+    "yields/stop": "*",
+    "component/indexof": "0.0.3"
   },
   "development": {
     "component/assert": "*",
