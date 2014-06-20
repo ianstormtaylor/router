@@ -2,7 +2,7 @@
   "name": "router",
   "repo": "ianstormtaylor/router",
   "license": "MIT",
-  "version": "0.6.3",
+  "version": "1.0.0",
   "description": "A nice client-side router.",
   "keywords": ["router", "push", "replace", "link", "delegate", "listen"],
   "dependencies": {
@@ -15,7 +15,7 @@
     "segmentio/ware": "*",
     "yields/prevent": "*",
     "yields/stop": "*",
-    "component/indexof": "0.0.3"
+    "component/indexof": "*"
   },
   "development": {
     "component/assert": "*",

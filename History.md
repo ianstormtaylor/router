@@ -1,4 +1,9 @@
 
+1.0.0 - June 20, 2014
+---------------------
+* remove need for timeout
+* add `#unbind`
+
 0.6.3 - April 22, 2014
 ----------------------
 * fix `in` keyword for IE8
