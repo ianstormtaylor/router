@@ -79,6 +79,9 @@ Check the [`examples`](/examples) folder for the some more complicated examples.
 ### #unbind()
   Unbind the `router`
 
+### .go(path, [state])
+  Trigger `path` on all routes that listen for it.
+
 ### .use(plugin)
   Use the given `plugin`.
 
