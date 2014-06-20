@@ -3,6 +3,7 @@
 ---------------------
 * remove need for timeout
 * add `#unbind`
+* add global `.go`
 
 0.6.3 - April 22, 2014
 ----------------------
