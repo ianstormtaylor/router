@@ -76,6 +76,9 @@ Check the [`examples`](/examples) folder for the some more complicated examples.
 ### #replace(path, [state])
   Replace the current URL in the history with a new `path`, with an optional `state` object.
 
+### #unbind()
+  Unbind the `router`
+
 ### .use(plugin)
   Use the given `plugin`.
 
