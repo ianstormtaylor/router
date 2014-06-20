@@ -186,6 +186,17 @@ describe('Router', function () {
         })
         .go();
     });
+
+    it('Router#go should work with trigger all routers', function(done) {
+      var pending = 2;
+      Router().on('/routes', next);
+      Router().on('/routes', next);
+      Router.go('/routes');
+
+      function next() {
+        if (!--pending) done();
+      }
+    })
   });
 
   describe('#start', function () {
