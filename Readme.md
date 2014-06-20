@@ -76,6 +76,9 @@ Check the [`examples`](/examples) folder for the some more complicated examples.
 ### #replace(path, [state])
   Replace the current URL in the history with a new `path`, with an optional `state` object.
 
+### .go(path, [state])
+  Trigger `path` on all routes that listen for it.
+
 ### .use(plugin)
   Use the given `plugin`.
 
