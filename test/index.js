@@ -197,6 +197,31 @@ describe('Router', function () {
         if (!--pending) done();
       }
     })
+
+    it('should not skip a pop in webkit browsers', function(done) {
+      var pending = 3;
+      var router = Router();
+
+      router
+        .on('/skip-one', function() {
+          console.log('called...', pending);
+          if (!--pending) {
+            console.log('her...');
+            return done();
+          }
+          router.go('/skip-two');
+        })
+        .on('/skip-two', function() {
+          --pending;
+          setTimeout(history.back, 1001);
+        })
+      .go()
+
+      // some time later
+      setTimeout(function() {
+        router.go('/skip-one');
+      }, 500);
+    })
   });
 
   describe('#start', function () {
