@@ -1,4 +1,8 @@
 
+1.0.1 - August 26, 2014
+-----------------------
+* pin `segmentio/ware` dependency
+
 1.0.0 - June 20, 2014
 ---------------------
 * remove need for timeout
