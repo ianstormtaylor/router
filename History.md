@@ -1,4 +1,8 @@
 
+1.0.2 - August 29, 2014
+-----------------------
+* update `pillarjs/path-to-regexp` dependency
+
 1.0.1 - August 26, 2014
 -----------------------
 * pin `segmentio/ware` dependency
