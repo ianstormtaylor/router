@@ -5,6 +5,10 @@
 ## Installation
 
     $ component install ianstormtaylor/router
+    
+or NPM (browserify users):
+
+    $ npm install npmcomponent/ianstormtaylor-router
 
 ## Example
 
